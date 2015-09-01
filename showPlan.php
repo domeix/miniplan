@@ -3,19 +3,25 @@
 		font-family: sans-serif;
 	}
 	
-	
+	h4 {
+		margin-bottom: 0px;
+	}
 
 
 </style>
 
-
-
-
-<h3>Aktueller Miniplan</h3>
-
 <?php
 include_once 'dbconnect.php';
 $oDB = new DBconnect();
+
+
+$vb = $oDB->getVonBis();
+
+echo "<h3>Miniplan von " 
+	. $vb['von']
+	. " bis "
+	. $vb['bis']
+	. "</h3>";
 
 
 $godis = $oDB->getDates();

@@ -5,7 +5,9 @@ $oDB = new DBconnect();
 $miniNames = $oDB->getMiniNames();
 ?>
 
-Set minis absent:
+Abwesenheiten eintragen: <br>
+(mit ", " getrennt)<br><br>
+
 <form method='post'>
 <select name='mininame'>
 <?php 
@@ -24,10 +26,9 @@ foreach ($miniNames as $name) {
 if (isset($_POST['dates'])) {
 	$oDB->setMiniAbsent($_POST['mininame'], $_POST['dates']);	
 }
+?>
 
-
-
-
+<p><a style="text-decoration: none; color: blue;" href=".">back</a></p>
 
 
 

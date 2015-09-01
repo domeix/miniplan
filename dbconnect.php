@@ -17,12 +17,17 @@ class DBconnect {
 		}
 	}	
 	
-	function saveMinis($dates) {
-		foreach ($dates as $mini) {
+	function saveMinis($minis) {
+		foreach ($minis as $mini) {
 			$this->query("INSERT INTO minis (name, absent) VALUES ('$mini', '');");
 		}
 	}
 	
+	function delMini($mini) {
+		return $this->query("DELETE FROM minis WHERE name LIKE '$mini';");
+	}
+	
+		
 	function getDates() {
 		$result = $this->query("SELECT * FROM godis;");
 		
@@ -43,7 +48,9 @@ class DBconnect {
 		return $allMinisArr;
 	}
 	
-	
+	/**
+	 * @return array mit Namen
+	 */
 	function getMiniNames() {
 		$arr = $this->getMinis();
 		
@@ -95,8 +102,22 @@ class DBconnect {
 	
 	function resetGodis() {
 		$this->query("DELETE FROM godis WHERE 1;");
+		$this->query("DELETE FROM plan WHERE 1;");
+	}
+	
+	function saveVonBis($von, $bis) {
+		return $this->query("INSERT INTO plan (von, bis) VALUES ('$von', '$bis');");
+	}
+	
+	function getVonBis() {
+		$vb = $this->query("SELECT * FROM plan WHERE id = 1;");
+		$vbO = mysqli_fetch_object($vb);
+		return ['von' => $vbO->von, 'bis' => $vbO->bis];
 		
-		
+	}
+	
+	function resetAbsent() {
+		return $this->query("UPDATE minis SET absent = '' WHERE 1;");
 	}
 	
 	

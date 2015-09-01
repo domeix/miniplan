@@ -88,6 +88,10 @@ if(isset($_POST['save'])) {
 
 ?>
 
+
+<p><a style="text-decoration: none; color: blue;" href=".">back</a> without saving</p>
+
+
 <script type="text/javascript">
 	function increment(checkbox, name) {
 
