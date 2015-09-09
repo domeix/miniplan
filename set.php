@@ -25,6 +25,8 @@ foreach($minis as $mini) {
 ?>
 <th>|</th>
 <th>alle</th>
+<th>|</th>
+<th>Summe</th>
 
 </tr>
 <?php
@@ -41,7 +43,7 @@ foreach($masses as $mass):
 			echo "<td>--</td>";
 		} else {
 			echo "<td>
-			<input type='checkbox' name='" . $mass->id . "-" . $mini->name . "' onclick='increment(this, \"" . $mini->name . "\")'>
+			<input type='checkbox' name='" . $mass->id . "-" . $mini->name . "' onclick='increment(this, \"" . $mini->name . "\", \"" . $mass->id . "\")'>
 			</td>";
 		}
 
@@ -49,7 +51,10 @@ foreach($masses as $mass):
 	}
 	echo "<td>|</td><td>
 		<input type='checkbox' name='" . $mass->id . "-alle'>
-		</td></tr>";
+		</td>
+		<td>|</td><td>
+		<p id='sum_" . $mass->id . "'>0</p>
+		</td> </tr>";
 
 endforeach;?>
 
@@ -93,7 +98,7 @@ if(isset($_POST['save'])) {
 
 
 <script type="text/javascript">
-	function increment(checkbox, name) {
+	function increment(checkbox, name, massid) {
 
 		var plusminus;
 		if(checkbox.checked) {
@@ -105,6 +110,10 @@ if(isset($_POST['save'])) {
 		var id = "sum_" + name;
 		document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML) + plusminus;
 
+		var id = "sum_" + massid;
+		document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML) + plusminus;
+
+		
 	}
 
 </script>

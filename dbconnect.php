@@ -110,7 +110,7 @@ class DBconnect {
 	}
 	
 	function getVonBis() {
-		$vb = $this->query("SELECT * FROM plan WHERE id = 1;");
+		$vb = $this->query("SELECT * FROM plan WHERE 1 LIMIT 1;");
 		$vbO = mysqli_fetch_object($vb);
 		return ['von' => $vbO->von, 'bis' => $vbO->bis];
 		
