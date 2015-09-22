@@ -47,7 +47,6 @@ foreach($masses as $mass):
 			</td>";
 		}
 
-
 	}
 	echo "<td>|</td><td>
 		<input type='checkbox' name='" . $mass->id . "-alle'>

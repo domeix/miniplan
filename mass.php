@@ -17,14 +17,23 @@ $oDB = new DBconnect();
 
 if(isset($_POST['dates'])){
 
-	$dates = explode(', ', $_POST['dates']);
+	$dates = explode(',', $_POST['dates']);
 
+	$datesTrim = array();
+	$comments = array();
 
 	foreach ($dates as $date) {
+		$mass = explode('-', $date);
 		echo "<br>$date";
+		$datesTrim[] = trim($mass[0]);
+		$comment = "";
+		if(isset($mass[1])) {
+			$comment = trim($mass[1]);
+		}
+		$comments[] = $comment;
 	}
 
-	$oDB->saveDates($dates);
+	$oDB->saveDates($datesTrim, $comments);
 
 }
 

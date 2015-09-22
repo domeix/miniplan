@@ -11,9 +11,11 @@ class DBconnect {
 		return $this->db->query($string);
 	}
 		
-	function saveDates($dates) {
+	function saveDates($dates, $comments) {
+		$i = 0;
 		foreach ($dates as $date) {
-			$this->query("INSERT INTO godis (date) VALUES ('$date');");
+			$this->query("INSERT INTO godis (date, comment) VALUES ('$date', '". $comments[$i] . "');");
+			$i++;
 		}
 	}	
 	
@@ -76,10 +78,16 @@ class DBconnect {
 	
 	
 	function isAbsent($name, $date) {
+		$date = trim($date);
 		$mini = $this->getMini($name);
-		$absent = explode(", ", $mini->absent);
+		$absent = explode(",", $mini->absent);
 		
-		return in_array($date, $absent);
+		$absentTrim = array();
+		foreach($absent as $absentDate) {			
+			$absentTrim[] = trim($absentDate);
+		}
+		
+		return in_array($date, $absentTrim);
 		
 	}
 	
@@ -112,7 +120,11 @@ class DBconnect {
 	function getVonBis() {
 		$vb = $this->query("SELECT * FROM plan WHERE 1 LIMIT 1;");
 		$vbO = mysqli_fetch_object($vb);
-		return ['von' => $vbO->von, 'bis' => $vbO->bis];
+		if(isset($vbO->von) && isset($vbO->bis)) {
+			return ['von' => $vbO->von, 'bis' => $vbO->bis];
+		} else {
+			return ['von' => '#Datum', 'bis' => '#Datum'];
+		}
 		
 	}
 	
