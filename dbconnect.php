@@ -3,7 +3,7 @@ class DBconnect {
 	private $db = NULL;
 
 	function __construct() {
-		$this->db = mysqli_connect("localhost", "dominik", "1234", "mini") or die("Error " . mysqli_error());
+		$this->db = new mysqli("localhost", "root", "", "mini","3308") or die("Error " . mysqli_error($this->db));
 		mysqli_set_charset($this->db, "UTF-8");
 	}
 
@@ -41,8 +41,12 @@ class DBconnect {
 	}
 
 	function getDate($id) {
+		return $this->getGodi($id)->date;
+	}
+
+	function getGodi($id) {
 		$result = $this->query("SELECT * FROM godis WHERE id = '$id'");
-		return mysqli_fetch_object($result)->date;
+		return mysqli_fetch_object($result);
 	}
 
 	function getMinis() {
@@ -143,6 +147,18 @@ class DBconnect {
 		return $this->query("UPDATE minis SET absent = '' WHERE 1;");
 	}
 
+	function getMinisOfMass($massid) {
+		$result = $this->query("SELECT * FROM godis WHERE id = '$massid';");
+		$godi = mysqli_fetch_object($result);
+		$miniarray = array();
+		foreach(explode(',', $godi->minis) as $mini) {
+			$miniarray[] = trim($mini);
+		}
+		return $miniarray;
+	}
 
+	function editGodi($id, $date, $comment) {
+		return $this->query("UPDATE godis SET date='$date', comment='$comment' WHERE id = $id;");
+	}
 
 }

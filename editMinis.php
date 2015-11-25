@@ -20,3 +20,4 @@ $miniNames = $oDB->getMiniNames();
 
 
 <p><a style="text-decoration: none; color: blue;" href=".">back</a></p>
+

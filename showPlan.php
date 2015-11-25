@@ -2,11 +2,13 @@
 	html {
 		font-family: sans-serif;
 	}
-	
-	h4 {
-		margin-bottom: 0px;
-	}
 
+	h4 {
+		margin-bottom: 1px;
+	}
+	h5 {
+		margin: 2px;
+	}
 
 </style>
 
@@ -17,7 +19,7 @@ $oDB = new DBconnect();
 
 $vb = $oDB->getVonBis();
 
-echo "<h3>Miniplan von " 
+echo "<h3>Miniplan von "
 	. $vb['von']
 	. " bis "
 	. $vb['bis']
@@ -31,7 +33,7 @@ foreach ($godis as $godi){
 	if($godi->comment != "") {
 		echo "<h5>" . $godi->comment . "</h5>";
 	}
-	
+
 	$minis = substr($godi->minis,0, strlen($godi->minis)-2);
 	echo $minis;
 }
