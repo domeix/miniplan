@@ -1,0 +1,81 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: sans-serif;
+}
+
+td {
+	background-color: #f3f3f3;
+}
+
+.summenKlasse1 {
+	background-color: #abe7a5;
+}
+.summenKlasse2 {
+	background-color: #cce8a4;
+}
+.summenKlasse3 {
+	background-color: #eae4a2;
+}
+.summenKlasse4 {
+	background-color: #efb59c;
+}
+.summenKlasse5 {
+	background-color: #f19a9a;
+}
+.summenKlasse6 {
+	background-color: #e95c5c;
+}
+.summenKlasse7 {
+	background-color: #e95c5c;
+}
+.summenKlasse8 {
+	background-color: #e95c5c;
+}
+.summenKlasse9 {
+	background-color: #e95c5c;
+}
+
+
+.anzahlKlasse1 {
+	background-color: #f19a9a;
+}
+.anzahlKlasse2 {
+	background-color: #f19a9a;
+}
+.anzahlKlasse3 {
+	background-color: #efb59c;
+}
+.anzahlKlasse4 {
+	background-color: #eae4a2;
+}
+.anzahlKlasse5 {
+	background-color: #cce8a4;
+}
+.anzahlKlasse6 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse7 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse8 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse9 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse10 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse11 {
+	background-color: #abe7a5;
+}
+
+.anzahlKlasse12 {
+	background-color: #abe7a5;
+}
