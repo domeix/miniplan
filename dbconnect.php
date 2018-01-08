@@ -3,7 +3,7 @@ class DBconnect {
 	private $db = NULL;
 
 	function __construct() {
-		$this->db = new mysqli("localhost", "root", "", "mini","3308") or die("Error " . mysqli_error($this->db));
+		$this->db = new mysqli("localhost", "d.meixner", "d(_xaV5:CK", "d_meixner","3308") or die("Error " . mysqli_error($this->db));
 		mysqli_set_charset($this->db, "UTF-8");
 	}
 
@@ -108,7 +108,8 @@ class DBconnect {
 
 	function setMini($name, $id) {
 		$mini = $this->query("SELECT minis FROM godis WHERE id LIKE '$id';");
-		$miniStr = mysqli_fetch_array($mini)[0];
+		$miniStrA = mysqli_fetch_array($mini);
+		$miniStr = $miniStrA[0];
 		if(is_null($miniStr)) {
 			$miniStr = "";
 		}
@@ -136,9 +137,9 @@ class DBconnect {
 		$vb = $this->query("SELECT * FROM plan WHERE 1 LIMIT 1;");
 		$vbO = mysqli_fetch_object($vb);
 		if(isset($vbO->von) && isset($vbO->bis)) {
-			return ['von' => $vbO->von, 'bis' => $vbO->bis];
+			return array('von' => $vbO->von, 'bis' => $vbO->bis);
 		} else {
-			return ['von' => '#Datum', 'bis' => '#Datum'];
+			return array('von' => '#Datum', 'bis' => '#Datum');
 		}
 
 	}
